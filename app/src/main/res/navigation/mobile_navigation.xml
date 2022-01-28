@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_dashboard">
+
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.uburn2.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.example.uburn2.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.uburn2.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_measurement"
+        android:name="com.example.uburn2.ui.measurement.MeasurementFragment"
+        android:label="@string/title_measurement"
+        tools:layout="@layout/fragment_measurement" />
+
+    <fragment
+        android:id="@+id/navigation_goals"
+        android:name="com.example.uburn2.ui.goals.GoalFragment"
+        android:label="@string/title_goals"
+        tools:layout="@layout/fragment_goal" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.uburn2.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+</navigation>

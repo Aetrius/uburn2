@@ -2,6 +2,7 @@ package com.example.uburn2;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -30,6 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private static final int DATABASE_VERSION = 1;
     //SplashViewModel mViewModel = new ViewModelProvider(this).get(SplashViewModel.class);
 
     @Override
@@ -48,15 +50,22 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         DatabaseHandler db = new DatabaseHandler(this);
+        //dbh.deleteDatabase();
 
+        //DatabaseHandler dbh = new DatabaseHandler(this);
         // Inserting Contacts
         //Log.d("Insert: ", "Inserting ..");
         //db.addGoal(new Goal(200, 150, "1/24/2022"));
         //db.addGoal(new Goal(180, 150, "2/30/2022"));
 
+        //db.addWeight(new Weight(150, "1/24/2022"));
+        //db.addWeight(new Weight(155, "1/25/2022"));
+
         // Reading all contacts
         Log.d("Reading: ", "Reading all contacts..");
         List<Goal> goals = db.getAllGoals();
+
+
 
         for (Goal gl : goals) {
             String log = "Id: " + gl.getID() + " ,Weight: " + gl.getWeight() + " ,Goal Weight: " +
@@ -65,5 +74,14 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Weight: ", log);
         }
 
+        Log.d("Reading: ", "Reading all weight history..");
+        List<Weight> weights = db.getAllWeights();
+
+        for (Weight weight : weights) {
+            String log = "Id: " + weight.getID() + " ,Weight: " + weight.getWeight() + " ,Weight Date: " +
+                    weight.getWeightDate();
+            // Writing Goals to log
+            Log.d("Weight: ", log);
+        }
     }
 }

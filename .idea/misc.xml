@@ -11,14 +11,16 @@
         <entry key="..\:/uBurn2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.3828125" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/activity_splash.xml" value="0.20520833333333333" />
-        <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
+        <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_dashboard.xml" value="0.33" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_goal.xml" value="0.26510416666666664" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_history.xml" value="0.26510416666666664" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_measurement.xml" value="0.20520833333333333" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_settings.xml" value="0.20520833333333333" />
+        <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_setup.xml" value="0.20677083333333332" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_splash.xml" value="0.26510416666666664" />
+        <entry key="..\:/uBurn2/app/src/main/res/layout/history_layout.xml" value="0.20677083333333332" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/number_picker.xml" value="0.2786458333333333" />
         <entry key="..\:/uBurn2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
       </map>

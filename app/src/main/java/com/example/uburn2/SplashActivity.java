@@ -27,6 +27,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private static boolean splashLoaded = false;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,8 @@ public class SplashActivity extends AppCompatActivity {
             splashLoaded = true;
         }
         else {
+            DatabaseHandler db = new DatabaseHandler(this);
+
             Intent goToMainActivity = new Intent(SplashActivity.this, MainActivity.class);
             goToMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(goToMainActivity);

@@ -70,11 +70,12 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="50dp"
                     android:text="Date:"
+                    android:textColor="@color/black"
                     android:textSize="24dp" />
 
                 <Button
                     android:id="@+id/datePicker"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:onClick="showTimePickerDialog"
                     android:text="@string/pick_time" />
@@ -91,13 +92,16 @@
                     android:layout_height="wrap_content"
                     android:paddingRight="50dp"
                     android:text="Weight:"
+                    android:textColor="@color/black"
                     android:textSize="24dp" />
 
-                <Button
-                    android:id="@+id/weightPicker"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/etWeight"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:onClick="showTimePickerDialog"
+                    android:background="@color/theme_purple"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
                     android:text="@string/pick_weight" />
             </LinearLayout>
 
@@ -108,7 +112,7 @@
                 android:layout_marginVertical="50dp">
 
                 <Button
-                    android:id="@+id/measurement_save"
+                    android:id="@+id/btnSave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -116,7 +120,7 @@
                     android:text="Save" />
 
                 <Button
-                    android:id="@+id/measurement_cancel"
+                    android:id="@+id/btnCancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"

@@ -6,23 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\tyler\.android\avd\Pixel_5_API_30.avd" />
+            <type value="SERIAL_NUMBER" />
+            <value value="emulator-5556" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <targetSelectedWithDropDown>
-      <Target>
-        <type value="QUICK_BOOT_TARGET" />
-        <deviceKey>
-          <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\tyler\.android\avd\Pixel_5_API_30.avd" />
-          </Key>
-        </deviceKey>
-      </Target>
-    </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-01-31T05:21:31.668432300Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-02-20T21:58:42.927745400Z" />
   </component>
 </project>

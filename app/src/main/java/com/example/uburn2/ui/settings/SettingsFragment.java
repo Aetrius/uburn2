@@ -3,6 +3,7 @@ package com.example.uburn2.ui.settings;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.uburn2.R;
@@ -39,6 +41,7 @@ public class SettingsFragment extends Fragment {
     private EditText etHeight;
 
     private Spinner spinGender;
+    private Button btnHeight;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,11 +54,13 @@ public class SettingsFragment extends Fragment {
         btnEdit = (Button) root.findViewById(R.id.btnSettingsEdit);
         btnSave = (Button) root.findViewById(R.id.btnSettingsSave);
         btnCancel = (Button) root.findViewById(R.id.btnSettingsCancel);
+        btnHeight = (Button) root.findViewById(R.id.btnHeight);
 
         etName = (EditText) root.findViewById(R.id.nameSetting);
         //etGender = (EditText) root.findViewById(R.id.genderSetting);
         etGoalWeight = (EditText) root.findViewById(R.id.goalWeightSetting);
-        etHeight = (EditText) root.findViewById(R.id.heightSetting);
+        //etHeight = (EditText) root.findViewById(R.id.heightSetting); ////Took this feature out for a spinner
+
 
 
         spinGender = (Spinner) root.findViewById(R.id.genderSetting);
@@ -84,6 +89,14 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        btnHeight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 showHeightEditDialog();
+            }
+        });
+
+
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +115,21 @@ public class SettingsFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        Refresh();
+        super.onResume();
+    }
+
+    public void showHeightEditDialog() {
+
+        View root = binding.getRoot();
+
+        FragmentManager fm = getParentFragmentManager();
+        HeightSettingDialogFragment heightDialog = HeightSettingDialogFragment.newInstance("Height");
+        heightDialog.show(fm, "fragment_height");
+
+    }
     public void Refresh() {
         SharedPreferences settings = getContext().getSharedPreferences("UserInfo", 0);
         etName.setText(settings.getString("Name", "").toString());
@@ -113,7 +141,13 @@ public class SettingsFragment extends Fragment {
                 GetGenderPosition(settings.getString("Gender", "").toString())
         );
         etGoalWeight.setText(settings.getString("GoalWeight", "").toString());
-        etHeight.setText(settings.getString("Height", "").toString());
+        //etHeight.setText(settings.getString("Height", "").toString());/////##
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = preferences.edit();
+        //int storedPreference = preferences.getInt("height", 0);
+        int height = preferences.getInt("height", 0);
+        btnHeight.setText(String.valueOf(height));
     }
 
     public void Save() {
@@ -125,7 +159,7 @@ public class SettingsFragment extends Fragment {
         editor.putString("Gender",spinGender.getSelectedItem().toString());
         Log.d("Gender",spinGender.getSelectedItem().toString());
         editor.putString("GoalWeight",etGoalWeight.getText().toString());
-        editor.putString("Height",etHeight.getText().toString());
+        //editor.putString("Height",etHeight.getText().toString());//##
         editor.commit();
     }
 
@@ -144,7 +178,7 @@ public class SettingsFragment extends Fragment {
         etName.setEnabled(true);
         spinGender.setEnabled(true);
         etGoalWeight.setEnabled(true);
-        etHeight.setEnabled(true);
+        //etHeight.setEnabled(true);//##
 
     }
 
@@ -152,7 +186,7 @@ public class SettingsFragment extends Fragment {
         etName.setEnabled(false);
         spinGender.setEnabled(false);
         etGoalWeight.setEnabled(false);
-        etHeight.setEnabled(false);
+        //etHeight.setEnabled(false);//##
     }
 
     public int GetGenderPosition(String value) {

@@ -45,7 +45,7 @@ public class HistoryFragment extends Fragment {
 
         // Inserting Contacts
         //Log.d("Insert: ", "Inserting ..");
-        weightList = db.getAllWeights();
+        weightList = db.getAllWeights("DESC");
         //your_array_list.add("foo");
         //your_array_list.add("bar");
 

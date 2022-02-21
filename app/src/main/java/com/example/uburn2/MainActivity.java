@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Log.d("Reading: ", "Reading all weight history..");
-        List<Weight> weights = db.getAllWeights();
+        List<Weight> weights = db.getAllWeights("ASC");
 
         for (Weight weight : weights) {
             String log = "Id: " + weight.getID() + " ,Weight: " + weight.getWeight() + " ,Weight Date: " +

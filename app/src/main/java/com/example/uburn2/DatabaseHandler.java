@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,6 +76,14 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
         db.close();
     }
 
+    public void emptyDatabase() {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("DELETE FROM " + TABLE_GOALS);
+        db.execSQL("DELETE FROM " + TABLE_WEIGHT);
+        db.close();
+    }
+
     // code to add the new contact
     public void addGoal(Goal goal) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -130,7 +139,9 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
 
         Cursor cursor = db.query(TABLE_WEIGHT, new String[] { KEY_ID,
                         KEY_WEIGHT, KEY_WEIGHT_DATE }, KEY_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
+                new String[] { String.valueOf(id) }, null, null, KEY_WEIGHT_DATE, null);
+
+
         if (cursor != null) {
             cursor.moveToFirst();
 
@@ -139,14 +150,14 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
                     Double.parseDouble(cursor.getString(2)),
                     new Date(cursor.getLong(3)*1000)
             );
+
+            Log.d("Error", cursor.getString(0));
             // return contact
             return weight;
         } else {
             return null;
         }
-
-
-    }
+            }
 
     // code to get all goals in a list view
     public List<Goal> getAllGoals() {
@@ -175,10 +186,10 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
     }
 
     // code to get all weights in a list view
-    public List<Weight> getAllWeights() {
+    public List<Weight> getAllWeights(String sortValue) {
         List<Weight> weightList = new ArrayList<Weight>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_WEIGHT;
+        String selectQuery = "SELECT  * FROM " + TABLE_WEIGHT + " Order By " + KEY_DATE + " " + sortValue;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -272,7 +283,7 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
     public double getNewestWeight() {
         List<Weight> weightList = new ArrayList<Weight>();
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TABLE_WEIGHT;
+        String selectQuery = "SELECT * FROM " + TABLE_WEIGHT + " ORDER BY " + KEY_DATE + " ASC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -280,6 +291,7 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date d = new Date();
 
+        Weight returnWeight = new Weight();
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
@@ -289,14 +301,21 @@ public class DatabaseHandler extends SQLiteOpenHelper  {
                 //weight.setWeightDate(cursor.getLong(2));
                 weight.setWeightDate(new Date((cursor.getLong(2) *1000)));
                 // Adding contact to list
+                returnWeight = weight;
                 weightList.add(weight);
             } while (cursor.moveToNext());
         }
 
-        Weight max = Collections.max(weightList);
+        try {
+            //
+            //Weight max = Collections.max(weightList);
+            return returnWeight.getWeight();
+        } catch (Exception ex) {
+            Log.d("DBERROR", ex.toString());
+        }
 
         // return contact list
-        return max.getWeight();
+        return 0.00;
 
     }
 

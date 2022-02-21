@@ -17,9 +17,10 @@
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_measurement.xml" value="0.20520833333333333" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
-        <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_settings.xml" value="0.20520833333333333" />
+        <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_setup.xml" value="0.20677083333333332" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/fragment_splash.xml" value="0.26510416666666664" />
+        <entry key="..\:/uBurn2/app/src/main/res/layout/height_setting_fragment.xml" value="0.3723958333333333" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/history_layout.xml" value="0.20677083333333332" />
         <entry key="..\:/uBurn2/app/src/main/res/layout/number_picker.xml" value="0.2786458333333333" />
         <entry key="..\:/uBurn2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />

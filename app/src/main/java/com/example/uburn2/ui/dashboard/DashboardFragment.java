@@ -25,6 +25,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DashboardFragment extends Fragment {
 
@@ -81,11 +82,25 @@ public class DashboardFragment extends Fragment {
 
     private void getEntries() {
         lineEntries = new ArrayList<>();
-        lineEntries.add(new Entry(1f, 250));
-        lineEntries.add(new Entry(2f, 255));
-        lineEntries.add(new Entry(3f, 254));
-        lineEntries.add(new Entry(4f, 255));
-        //lineEntries.add(new Entry(""))
+        DatabaseHandler db = new DatabaseHandler(getContext());
+
+        List<Weight> entries = db.getAllWeights("ASC");
+
+        int count = 1;
+
+        try {
+            for (Weight w: entries) {
+                lineEntries.add(new Entry(count, (float)w.getWeight()));
+                count++;
+            }
+        } catch (Exception ex) {
+
+        }
+        //lineEntries.add(new Entry(1f, 250));
+        //lineEntries.add(new Entry(2f, 255));
+        //lineEntries.add(new Entry(3f, 254));
+        //lineEntries.add(new Entry(4f, 255));
+
     }
 
     @Override
@@ -94,13 +109,19 @@ public class DashboardFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateUIMetrics();
+    }
+
     public void updateUIMetrics() {
         DatabaseHandler db = new DatabaseHandler(getContext());
-
+        //db.emptyDatabase();
         // Inserting Contacts
         //Log.d("Insert: ", "Inserting ..");
-        //db.addWeight(new Weight(Double.parseDouble(etWeight.getText().toString()), btnDatePicker.getText().toString()));
-        db.addWeight(new Weight(250, new Date("1/30/2022")));
+        //db.addWeight(new Weight(Double.parseDouble(etWeight.getText().toString()), btnDatePicr.getText().toString()));
+        //db.addWeight(new Weight(250, new Date("1/30/2022")));
         //db.addWeight(new Weight(251, new Date("1/29/2022")));
         //db.addWeight(new Weight(252, new Date("1/28/2022")));
         //db.addWeight(new Weight(253, new Date("1/27/2022")));
